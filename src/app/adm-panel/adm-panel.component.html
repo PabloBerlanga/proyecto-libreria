@@ -1,0 +1,67 @@
+<div class="fluid-container overflow-hidden">
+    <div class="row flex-nowrap">
+    <div class="bg-dark col-auto col-sm-1 col-md-2 col-lg-2 min-vh-100 d-flex flex-column justify-content-between" style="width: 25%;">
+      <div class="bg-dark p-2">
+        <a class="d-flex text-decoration-none text-white mt-2 ms-lg-4 ms-md-2">
+          <span class="fs-2 d-none d-md-inline">Panel de<br/> Administración</span>
+        </a>
+        <hr style="height:2px; width:100%; border-width:0; color:lightgray; background-color:lightgray">
+        <ul class="nav nav-pills flex-column mt-4">
+          <li class="nav-item">
+            <a href="#" class="nav-link text-white" style="text-align: center;">
+              <i class="fs-4 bi bi-house"></i>
+              <span class="fs-3 ms-2 d-none d-md-inline">
+                Inicio
+              </span>
+            </a>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="#" class="nav-link text-white" style="text-align: center;">
+              <i class="fs-4 bi bi-book"></i>
+              <span class="fs-3 ms-2 d-none d-md-inline">
+                Libros
+              </span>
+            </a>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="#" class="nav-link text-white" style="text-align: center;">
+              <i class="fs-4 bi bi-building"></i>
+              <span class="fs-3 ms-2 d-none d-md-inline">
+                Editoriales
+              </span>
+            </a>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="#" class="nav-link text-white" style="text-align: center;">
+              <i class="fs-4 bi bi-person-vcard"></i>
+              <span class="fs-3 ms-2 d-none d-md-inline">
+                Usuarios
+              </span>
+            </a>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="#" class="nav-link text-white" style="text-align: center;">
+              <i class="fs-4 bi bi-receipt"></i>
+              <span class="fs-3 ms-2 d-none d-md-inline">
+                Compras
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown open p-3" style="text-align: center;">
+        <button class="btn border-none dropdown-toggle text-white" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fs-4 bi bi-person"></i><span class="fs-3 ms-2 d-none d-md-inline">Usuario</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="triggerId">
+          <button class="dropdown-item" href="#">Mi cuenta</button>
+          <button class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesion</button>
+        </div>
+      </div>
+    </div>
+    <div class="p-3">
+
+    </div>
+    </div>
+    </div>
+    
