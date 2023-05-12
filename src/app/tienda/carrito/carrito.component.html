@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <div class="productos" *ngFor="let libro of miCarrito$ | async">
+        <div class="cuerpo">
+            <p>{{libro.titulo}}</p>
+            <div class="info-productos">
+                <p>{{libro.precio}} €</p>
+                <p>{{libro.cantidadCarrito}}</p>
+            </div>
+        </div>
+        <div class="total-producto">
+            <p>{{libro.precio * libro.cantidadCarrito}}€</p>
+        </div>
+        <div class="botones">
+            <div class="operadores">
+                <i class="bi bi-dash"></i>
+                <span>{{libro.cantidadCarrito}}</span>
+                <i class="bi bi-plus"></i>
+            </div>
+            <i class="bi bi-trash"></i>
+        </div>
+    </div>
+    <div class="total-carrito">
+        <p class="total">Total: totalCarrito</p>
+    </div>
+    <button class=" btn w-50 align-self-center p-2 comprar">
+        <span>Confirmar compra</span>
+    </button>
+</div>

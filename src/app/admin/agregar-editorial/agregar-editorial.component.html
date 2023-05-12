@@ -1,0 +1,44 @@
+<div class="contenido">
+    <div class="encabezado">
+        <p class="text-center font-weight-bold">Nuevo Editorial</p>
+    </div>
+    <div class="formulario">
+        <form class="needs-validation" action="">
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="nombre">Nombre editorial</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre editorial" [(ngModel)]="nombreEditorial"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca un nombre para la editorial
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="fechaAlta">Fecha Alta</label>
+                <input type="date" name="fechaAlta" id="fechaAlta" class="form-control" placeholder="Fecha Alta" [(ngModel)]="fechaAltaEditorial"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca la fecha de alta de la editorial
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="prefijo">Prefijo Editorial</label>
+                <input type="number" name="prefijo" id="prefijo" class="form-control" placeholder="Prefijo editorial" [(ngModel)]="preEditorial"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca el prefijo editorial correspondiente
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="estado">Estado</label>
+                <select class="form-select form-select-md" aria-label=".form-select-lg" name="estado" [(ngModel)]="estadoEditorial">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 p-1 mt-5" (click)="crearEditorial()">
+                Crear Editorial
+            </button>
+        </form>
+    </div>
+</div>

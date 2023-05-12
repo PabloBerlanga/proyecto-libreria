@@ -1,0 +1,19 @@
+<div class="contaniner-fluid">
+<div class="filtros">
+    <h1>Aqui van los filtros</h1>
+</div>
+<hr>
+<div class="listado-libros">
+    <mat-card *ngFor="let libro of libros" class="bg-info">
+        <mat-card-content>
+            <h1>Imagen aqui</h1>
+            <h1>{{libro.titulo}}</h1>
+            <h1>{{libro.precio}}€</h1>
+            <div class="botones">
+                <button class="btn btn-primary carrito" (click)="onAgregarCarrito(libro)">Añadir al carrito</button>
+                <button class="btn btn-primary info">Mas información</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+</div>

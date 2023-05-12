@@ -1,0 +1,52 @@
+<div class="contenido">
+    <div class="encabezado">
+        <p class="text-center font-weight-bold">Nuevo Usuario</p>
+    </div>
+    <div class="formulario">
+        <form class="needs-validation" action="">
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="nombre">Nombre completo</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre completo" [(ngModel)]="nombreUsuario"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca el nombre completo del usuario
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="correo">Correo</label>
+                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico" [(ngModel)]="correoUsuario"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca el correo del usuario
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="user">Usuario</label>
+                <input type="string" name="user" id="user" class="form-control" placeholder="Usuario" [(ngModel)]="userUsuario"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca un usuario
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="pass">Contraseña</label>
+                <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña" [(ngModel)]="passUsuario"
+                    required />
+                <div class="invalid-feedback fs-3">
+                    Por favor introduzca una contraseña para el usuario
+                </div>
+            </div>
+            <div class="form-group was-validated">
+                <label class="form-label fs-3" for="tipo">Tipo de usuario</label>
+                <select class="form-select form-select-md" aria-label=".form-select-lg" name="tipo" [(ngModel)]="tipoUsuario">
+                    <option value="Administrador">Administrador</option>
+                    <option value="Usuario">Usuario</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 p-1 mt-5" (click)="crearUsuario()">
+                Crear Usuario
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="encabezado">
+  <p class="text-center font-weight-bold">Listado de Libros</p>
+</div>
+<div class="tabla">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Editorial</th>
+        <th scope="col">Fecha Salida</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody class="listado" *ngFor="let Libro of libros; index as i">
+      <tr>
+        <th scope="row">{{i}}</th>
+        <td>{{Libro.titulo}}</td>
+        <td>{{Libro.autor}}</td>
+        <td>{{Libro.precio}}</td>
+        <td>{{Libro.editorial}}</td>
+        <td>{{Libro.fechaSalida}}</td>
+        <td>{{Libro.cantidad}}</td>
+        <td><button id="editar" class="btn btn-primary">Editar</button><button id="borrar" class="btn btn-danger">Borrar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="nuevoLibro d-flex flex-row-reverse">
+  <button class="btn btn-success" routerLink="nuevo-libro">Nuevo Libro</button>
+</div>
+
+
+

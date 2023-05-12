@@ -1,0 +1,59 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.productos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info-productos {
+    display: flex;
+    gap:1rem;
+}
+
+.cuerpo {
+    flex-basis: 50%;
+}
+
+.total-producto{
+    flex-basis: 20%;
+}
+
+.botones{
+    flex-basis: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:2rem;
+}
+
+.operadores {
+    display:flex;
+    align-items: center;
+    gap:1rem;
+}
+
+spam {
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.total-carrito{
+    padding: 1rem;
+}
+
+.total{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.comprar{
+    background-color: lightblue;
+    color: white;
+}

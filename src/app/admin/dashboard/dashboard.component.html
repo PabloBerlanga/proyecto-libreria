@@ -1,0 +1,42 @@
+<div class="encabezado">
+  <p class="text-center font-weight-bold">Dashboard</p>
+</div>
+  <div class="widget-container">
+    <div class="widget green" (click)="rutaLibros()">
+      <div class="icon">
+        <i class="icon bi bi-book"></i>
+      </div>
+      <div class="value">
+        <div class="top">{{ numLibros }}</div>
+        <div class="bottom">Libros</div>
+      </div>
+    </div>
+    <div class="widget yellow" (click)="rutaEditoriales()">
+      <div class="icon">
+        <i class="icon bi bi-building"></i>
+      </div>
+      <div class="value">
+        <div class="top">{{ numEditoriales }}</div>
+        <div class="bottom">Editoriales</div>
+      </div>
+    </div>
+    <div class="widget red" (click)="rutaUsuarios()">
+      <div class="icon">
+        <i class="icon bi bi-person-vcard"></i>
+      </div>
+      <div class="value">
+        <div class="top">{{ numUsuarios }}</div>
+        <div class="bottom">Usuarios</div>
+      </div>
+    </div>
+    <div class="widget blue" (click)="rutaCompras()">
+      <div class="icon">
+        <i class="icon bi bi-receipt"></i>
+      </div>
+      <div class="value">
+        <div class="top">{{ numCompras }}</div>
+        <div class="bottom">Compras</div>
+      </div>
+    </div>
+  </div>
+

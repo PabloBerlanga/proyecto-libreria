@@ -1,0 +1,33 @@
+<div class="encabezado">
+    <p class="text-center font-weight-bold">Listado de Editoriales</p>
+  </div>
+  <div class="tabla">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Fecha Alta</th>
+          <th scope="col">Prefijo Editorial</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha Baja</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody class="listado" *ngFor="let Editorial of editoriales; index as i">
+        <tr>
+          <th scope="row">{{i}}</th>
+          <td>{{Editorial.nombre}}</td>
+          <td>{{Editorial.fecha_alta}}</td>
+          <td>{{Editorial.prefijo_editorial}}</td>
+          <td *ngIf="Editorial.activo == 'Activo'">Activo</td>
+          <td *ngIf="Editorial.activo == 'Inactivo'">Inactivo</td>
+          <td>{{Editorial.fecha_baja}}</td>
+          <td><button id="editar" class="btn btn-primary">Editar</button><button id="borrar" class="btn btn-danger">Borrar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="nuevoLibro d-flex flex-row-reverse">
+    <button class="btn btn-success" routerLink="nueva-editorial">Nuevo Editorial</button>
+  </div>

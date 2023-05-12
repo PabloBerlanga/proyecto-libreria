@@ -1,0 +1,14 @@
+<mat-toolbar class="header mat-elevation-z3">
+    <span> Universo de las historias </span>
+    <span class="example-spacer"></span>
+    <div class="menu">
+        <a mat-button routerLink=""><i class="bi bi-person-circle"></i></a>
+        <!--<a mat-button routerLink="admin">Admin (Pruebas)</a>-->
+        <a mat-button matBadge="1" (click)="onToggleCarrito()">
+            <i class="bi bi-cart"></i>
+        </a>
+    </div>
+</mat-toolbar>
+<div class="carrito" [ngClass]="{mostrarCarrito: verCarrito}">
+    <app-carrito></app-carrito>
+</div>
