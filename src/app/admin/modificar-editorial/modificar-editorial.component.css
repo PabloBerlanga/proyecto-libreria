@@ -1,0 +1,28 @@
+.contenido {
+    width: 74%;
+}
+
+.encabezado {
+    margin-top: 30px;
+    margin-bottom: 65px;
+    font-size: 50px;
+}
+
+.form-group {
+    margin-top: 40px;
+}
+
+.estado{
+    background-color: white;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+div#mat-select-0-panel{
+    margin-left: -15px;
+}
+
+.footer {
+    text-align: center;
+}

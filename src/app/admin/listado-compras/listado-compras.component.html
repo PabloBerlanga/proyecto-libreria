@@ -1,1 +1,27 @@
-<p>compras works!</p>
+<div class="encabezado">
+  <p class="text-center font-weight-bold">Listado de Compras</p>
+</div>
+<div class="tabla">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Numero de Contacto</th>
+        <th scope="col">Poblacion</th>
+        <th scope="col">Forma de Pago</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody class="listado" *ngFor="let Compra of compras; index as i">
+      <tr>
+        <th scope="row">{{ i }}</th>
+        <td>{{ Compra.user }}</td>
+        <td>{{ Compra.numContacto }}</td>
+        <td>{{ Compra.poblacion }}</td>
+        <td>{{ Compra.formaPago }}</td>
+        <td>{{ Compra.total }}€</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

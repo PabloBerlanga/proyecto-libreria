@@ -1,0 +1,18 @@
+.contenido-carrito{
+    width: 100%;
+}
+
+.boton{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.compra-realizada{
+    margin-top: 50px;
+}
+
+
+table{
+    vertical-align: middle;
+}

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Compra } from 'src/app/models/compra.model';
+import { Editorial } from 'src/app/models/editorial.model';
+import { Libro } from 'src/app/models/libro.model';
+import { Usuario } from 'src/app/models/usuario.model';
+import { ComprasService } from 'src/app/services/compras.service';
 import { EditorialesService } from 'src/app/services/editoriales.service';
 import { LibrosService } from 'src/app/services/libros.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -16,11 +21,34 @@ export class DashboardComponent {
   numUsuarios: number;
   numCompras: number;
   
-  constructor(private LibrosService:LibrosService, private UsuariosService:UsuariosService, private EditorialesService:EditorialesService,private router:Router){
-    this.numEditoriales = this.EditorialesService.editoriales.length;
-    //this.numLibros = this.LibrosService.libros.length;
-    this.numUsuarios = this.UsuariosService.usuarios.length;
-    this.numCompras = 0;
+  constructor(private LibrosService:LibrosService, private UsuariosService:UsuariosService, private EditorialesService:EditorialesService,private ComprasService: ComprasService,private router:Router){
+    this.LibrosService.getLibros().subscribe(
+      libros => {
+        let Libros: Libro[] = libros;
+        this.numLibros = Libros.length
+      }
+    )
+
+    this.UsuariosService.getUsuarios().subscribe(
+      usuarios => {
+        let Usuarios: Usuario[] = usuarios;
+        this.numUsuarios = Usuarios.length
+      }
+    )
+
+    this.EditorialesService.getEditoriales().subscribe(
+      editoriales => {
+        let Editoriales: Editorial[] = editoriales;
+        this.numEditoriales = Editoriales.length
+      }
+    )
+
+    this.ComprasService.getCompras().subscribe(
+      compras => {
+        let Compras: Compra[] = compras;
+        this.numCompras = Compras.length
+      }
+    )
   }
 
   rutaLibros(){

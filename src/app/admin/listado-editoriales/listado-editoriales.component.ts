@@ -12,6 +12,21 @@ export class ListadoEditorialesComponent {
   editoriales: Editorial[];
 
   constructor(private EditorialesServices: EditorialesService){
-    this.editoriales = this.EditorialesServices.editoriales;
+    this.EditorialesServices.getEditoriales().subscribe(
+      editoriales => {
+        this.editoriales = editoriales;
+      }
+    )
   }
+
+  borrarEditorial(editorial:Editorial){
+
+    if(window.confirm("¿Estas seguro de que quieres borrar esta editorial?")){
+      this.EditorialesServices.borrarEditorial(editorial)
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+    }
+
+  }
+
 }

@@ -10,7 +10,6 @@
           <th scope="col">Fecha Alta</th>
           <th scope="col">Prefijo Editorial</th>
           <th scope="col">Estado</th>
-          <th scope="col">Fecha Baja</th>
           <th scope="col">Opciones</th>
         </tr>
       </thead>
@@ -18,12 +17,11 @@
         <tr>
           <th scope="row">{{i}}</th>
           <td>{{Editorial.nombre}}</td>
-          <td>{{Editorial.fecha_alta}}</td>
-          <td>{{Editorial.prefijo_editorial}}</td>
-          <td *ngIf="Editorial.activo == 'Activo'">Activo</td>
-          <td *ngIf="Editorial.activo == 'Inactivo'">Inactivo</td>
-          <td>{{Editorial.fecha_baja}}</td>
-          <td><button id="editar" class="btn btn-primary">Editar</button><button id="borrar" class="btn btn-danger">Borrar</button></td>
+          <td>{{Editorial.fechaAlta}}</td>
+          <td>{{Editorial.prefijo}}</td>
+          <td *ngIf="Editorial.estado == 'Activo'">Activo</td>
+          <td *ngIf="Editorial.estado == 'Inactivo'">Inactivo</td>
+          <td><button id="editar" class="btn btn-primary" [routerLink]="['modificar-editorial/', Editorial.id]">Editar</button><button id="borrar" class="btn btn-danger" (click)="borrarEditorial(Editorial)">Borrar</button></td>
         </tr>
       </tbody>
     </table>

@@ -8,13 +8,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
 
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './tienda/header/header.component';
 import { ListaTiendaComponent } from './tienda/lista-tienda/lista-tienda.component';
@@ -24,6 +24,14 @@ import { MatCardModule } from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import { CarritoComponent } from './tienda/carrito/carrito.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { CompraComponent } from './tienda/compra/compra.component';
+import { DeshibitarSiDirective } from './directives/deshibitar-si.directive';
+import { FilterPipe } from './pipes/filter.pipe';
+
 
 
 
@@ -36,12 +44,15 @@ import { CarritoComponent } from './tienda/carrito/carrito.component';
     ListaTiendaComponent,
     DashboardComponent,
     TiendaComponent,
-    CarritoComponent
+    CarritoComponent,
+    CompraComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTabsModule,
     MatToolbarModule,
@@ -51,9 +62,15 @@ import { CarritoComponent } from './tienda/carrito/carrito.component';
     MatCardModule,
     MatBadgeModule,
     MatMenuModule,
+    DeshibitarSiDirective,
     MatSelectModule,
-    AngularFireModule.initializeApp(environment.firestore),
-    AngularFirestoreModule
+    provideFirebaseApp(() => initializeApp(environment.firestore)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    MatStepperModule
+
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

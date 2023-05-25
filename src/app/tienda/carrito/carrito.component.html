@@ -3,26 +3,26 @@
         <div class="cuerpo">
             <p>{{libro.titulo}}</p>
             <div class="info-productos">
-                <p>{{libro.precio}} €</p>
-                <p>{{libro.cantidadCarrito}}</p>
+                <p>Precio: {{libro.precio}} €</p>
+                <p>Cantidad: {{libro.cantidadCarrito}}</p>
             </div>
         </div>
         <div class="total-producto">
-            <p>{{libro.precio * libro.cantidadCarrito}}€</p>
+            <p>Total: {{totalProductos(libro.precio,libro.cantidadCarrito)}}€</p>
         </div>
         <div class="botones">
             <div class="operadores">
-                <i class="bi bi-dash"></i>
+                <i class="bi bi-dash" (click)="modificarNumeroProductos(libro.id, '-')"></i>
                 <span>{{libro.cantidadCarrito}}</span>
-                <i class="bi bi-plus"></i>
+                <i class="bi bi-plus" (click)="modificarNumeroProductos(libro.id, '+')"></i>
             </div>
-            <i class="bi bi-trash"></i>
+            <i class="bi bi-trash" (click)="borrarProducto(libro.id)"></i>
         </div>
     </div>
     <div class="total-carrito">
-        <p class="total">Total: totalCarrito</p>
+        <p class="total">Total: {{totalCarrito()}}€</p>
     </div>
-    <button class=" btn w-50 align-self-center p-2 comprar">
+    <button class="btn btn-primary w-50 align-self-center p-2 comprar" (click)="confirmarCompra()" [disabled]="totalCarrito() == 0">
         <span>Confirmar compra</span>
     </button>
 </div>

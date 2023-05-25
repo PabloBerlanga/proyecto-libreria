@@ -32,6 +32,15 @@
     height: 35px;
 }
 
-.form-login form button[type="submit"]{
+.form-login form button{
     font-size: 20px;
+}
+
+.google {
+    background-color: #dd4b39;
+    margin-left: 50px;
+}
+
+i {
+    padding-right: 10px;
 }

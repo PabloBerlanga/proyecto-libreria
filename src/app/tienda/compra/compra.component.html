@@ -1,0 +1,128 @@
+<app-header></app-header>
+
+<mat-horizontal-stepper linear [labelPosition]="'bottom'">
+
+  <mat-step label="Verifica tu carrito" [completed]=true>
+    <h1 class="text-center mb-5">Verifica tu carrito antes de proceder al pago</h1>
+    <div class="boton">
+      <h1>Total: {{ total }}€</h1>
+      <button class="btn btn-success mb-3" (click)="completarPaso()" matStepperNext>Confirmar pedido</button>
+    </div>
+    <div class="contenido-carrito">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Imagen</th>
+            <th class="text-center" scope="col">Producto</th>
+            <th class="text-center" scope="col">Precio</th>
+            <th class="text-center" scope="col">Cantidad comprada</th>
+            <th class="text-center" scope="col">Precio total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of miCarrito">
+            <th class="text-center" scope="row"><img [src]="producto.img" alt="Imagen del producto" width="100px" height="150px"></th>
+            <td>
+              <h1 class="text-center">{{ producto.titulo }}</h1>
+            </td>
+            <td>
+              <h1 class="text-center">{{ producto.precio }}€</h1>
+            </td>
+            <td>
+              <h1 class="text-center">{{ producto.cantidadCarrito}}</h1>
+            </td>
+            <td>
+              <h1 class="text-center">{{ producto.precio * producto.cantidadCarrito}}€</h1>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="volver">
+      <button class="btn btn-danger" routerLink="/tienda">Volver a la tienda</button>
+    </div>
+  </mat-step>
+  <mat-step label="Indica tu datos de compra">
+    <div class="datosCompra">
+      <form action="" [formGroup]="datosPago">
+        <h1>Dirección <label style="color: red">*</label></h1>
+        <div class="formulario shadow p-3 mb-5 rounded">
+          <div class="row">
+            <div class="form-group mb-3 col-md-10">
+              <label for="calle">Calle</label>
+              <input type="text" class="form-control" id="calle" formControlName="calle">
+              <div *ngIf="calle && calle.invalid && calle.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+            <div class="form-group mb-3 col-md-2">
+              <label for="numContacto">Numero de contacto</label>
+              <input type="text" class="form-control" id="numContacto" formControlName="numContacto">
+              <div *ngIf="numContacto && numContacto.invalid && numContacto.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="poblacion">Población</label>
+              <input type="text" class="form-control" id="poblacion" formControlName="poblacion">
+              <div *ngIf="poblacion && poblacion.invalid && poblacion.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="provincia">Provincia</label>
+              <input type="text" class="form-control" id="provincia" formControlName="provincia">
+              <div *ngIf="provincia && provincia.invalid && provincia.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="CP">Codigo Postal</label>
+              <input type="text" class="form-control" id="CP" formControlName="CP">
+              <div *ngIf="CP && CP.invalid && CP.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form action="" [formGroup]="datosPago">
+        <h1>Facturación <label style="color: red">*</label></h1>
+        <div class="formulario shadow p-3 mb-5 rounded">
+          <div class="form-group mb-3">
+            <label for="formaPago">Forma de Pago</label>
+            <select id="formaPago" class="form-control" formControlName="formaPago">
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta" selected>Tarjeta</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="form-group mb-3 col-md-4">
+              <label for="numeroTarjeta">Numero de Tarjeta</label>
+              <input type="text" class="form-control" id="numeroTarjeta" formControlName="numeroTarjeta" [appDeshibitarSi]="formaPago.value === 'Efectivo'">
+              <div *ngIf="numeroTarjeta && numeroTarjeta.invalid && numeroTarjeta.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="fechaExpiracion">Fecha de validez</label>
+              <input type="date" class="form-control" id="fechaExpiracion" formControlName="fechaExpiracion" [appDeshibitarSi]="formaPago.value === 'Efectivo'">
+              <div *ngIf="fechaExpiracion && fechaExpiracion.invalid && fechaExpiracion.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="CVV">CVV</label>
+              <input type="text" class="form-control" id="CVV" formControlName="CVV" [appDeshibitarSi]="formaPago.value === 'Efectivo'">
+              <div *ngIf="CVV && CVV.invalid && CVV.touched"><p class="text-danger">* Este campo es obligatorio</p></div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="realizar-compra d-flex flex-row-reverse">
+        <button class="btn btn-success" (click)="tramitarCompra()" [disabled]="datosPago.invalid" matStepperNext>Realizar compra</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Compra Realizada">
+    <div class="compra-realizada text-center">
+      <i class="bi bi-check-circle text-success mt-5" style="font-size: 120px;"></i>
+      <h1 class="mt-5">Muchas gracias por su compra</h1>
+      <h1>Esperamos que lo disfrute!</h1>
+      <h1>Vuelva Pronto!</h1>
+    </div>
+    <div class="volver">
+      <button class="btn btn-danger" routerLink="/tienda">Volver a la tienda</button>
+    </div>
+  </mat-step>
+
+
+</mat-horizontal-stepper>

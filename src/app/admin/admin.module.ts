@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 //MATERIAL
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
-import {CdkTableModule} from '@angular/cdk/table';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatCardModule} from '@angular/material/card';
-import {MatSelectModule} from '@angular/material/select';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -26,6 +27,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AgregarLibroComponent } from './agregar-libro/agregar-libro.component';
+import { ModificarLibroComponent } from './modificar-libro/modificar-libro.component';
+import { ModificarEditorialComponent } from './modificar-editorial/modificar-editorial.component';
 
 
 
@@ -38,12 +41,15 @@ import { AgregarLibroComponent } from './agregar-libro/agregar-libro.component';
     ListadoComprasComponent,
     AgregarEditorialComponent,
     AgregarUsuarioComponent,
-    AgregarLibroComponent
+    AgregarLibroComponent,
+    ModificarLibroComponent,
+    ModificarEditorialComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatTabsModule,
     MatToolbarModule,
     MatButtonModule,

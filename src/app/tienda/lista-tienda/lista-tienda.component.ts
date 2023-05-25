@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage'
 import { Libro } from 'src/app/models/libro.model';
 import { LibrosService } from 'src/app/services/libros.service';
 import { TiendaService } from 'src/app/services/tienda.service';
@@ -11,6 +12,8 @@ import { TiendaService } from 'src/app/services/tienda.service';
 export class ListaTiendaComponent implements OnInit {
 
   libros: Libro[]
+  filtrarNombre = '';
+  imagenes:string[] = [];
 
   constructor(private LibrosService: LibrosService, private TiendaService:TiendaService){
   }
@@ -22,7 +25,6 @@ export class ListaTiendaComponent implements OnInit {
       }
     )
   }
-
 
   onAgregarCarrito(libro:Libro){
     this.TiendaService.agregarCarrito(libro);

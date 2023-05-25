@@ -9,14 +9,18 @@ import { ListadoComprasComponent } from './listado-compras/listado-compras.compo
 import { AgregarEditorialComponent } from './agregar-editorial/agregar-editorial.component';
 import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
 import { AgregarLibroComponent } from './agregar-libro/agregar-libro.component';
+import { ModificarLibroComponent } from './modificar-libro/modificar-libro.component';
+import { ModificarEditorialComponent } from './modificar-editorial/modificar-editorial.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, children: [
     { path: '', component: DashboardComponent},
     { path: 'libros', component: ListadoLibrosComponent},
     { path: 'libros/nuevo-libro', component: AgregarLibroComponent},
+    { path: 'libros/modificar-libro/:id', component: ModificarLibroComponent},
     { path: 'editoriales', component: ListadoEditorialesComponent},
     { path: 'editoriales/nueva-editorial', component: AgregarEditorialComponent},
+    { path: 'editoriales/modificar-editorial/:id', component: ModificarEditorialComponent},
     { path: 'usuarios', component: ListadoUsuariosComponent},
     { path: 'usuarios/nuevo-usuario', component: AgregarUsuarioComponent},
     { path: 'compras', component: ListadoComprasComponent},

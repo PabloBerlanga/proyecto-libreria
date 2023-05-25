@@ -1,12 +1,13 @@
 export interface Libro{
     id?: string;
-    titulo: string;
-    autor: string;
-    precio: number;
-    fechaSalida: string;
-    editorial: string;
-    cantidad: number;
-    cantidadCarrito:number;
+    img: any;
+    titulo: any;
+    autor: any;
+    precio: any;
+    fechaSalida: any;
+    editorial: any;
+    cantidad: any;
+    cantidadCarrito:any;
 
 
    /* constructor(titulo:string, autor:string, precio:number, fecha_salida:string, editorial:string, cantidad:number){

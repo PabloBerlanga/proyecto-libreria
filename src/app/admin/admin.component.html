@@ -1,6 +1,7 @@
 <div class="fluid-container overflow-hidden">
-    <div class="row flex-nowrap">
-    <div class="bg-dark col-auto col-sm-1 col-md-2 col-lg-2 min-vh-100 d-flex flex-column justify-content-between" style="width: 25%;">
+  <div class="row flex-nowrap">
+    <div class="bg-dark col-auto col-sm-1 col-md-2 col-lg-2 min-vh-100 d-flex flex-column justify-content-between"
+      style="width: 25%;">
       <div class="bg-dark p-2">
         <a class="d-flex text-decoration-none text-white mt-5 mb-5 ms-lg-4 ms-md-2">
           <span class="fs-2 d-none d-md-inline">Panel de Administración</span>
@@ -49,18 +50,12 @@
           </li>
         </ul>
       </div>
-      <div class="dropdown open p-3" style="text-align: center;">
-        <button class="btn border-none dropdown-toggle text-white" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fs-4 bi bi-person"></i><span class="fs-3 ms-2 d-none d-md-inline">Usuario</span>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="triggerId">
-          <button class="dropdown-item" href="#">Mi cuenta</button>
-          <button class="dropdown-item">Cerrar Sesion</button>
-        </div>
-      </div>
+      <button class="btn border-none text-white text-center mb-4" type="button" (click)="logOut()">
+        <i class="fs-4 bi bi-person"></i><span class="fs-3 ms-2 d-none d-md-inline">Cerrar Sesion</span>
+      </button>
     </div>
     <div class="p-3">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
-    </div>
-    </div>
+  </div>
+</div>

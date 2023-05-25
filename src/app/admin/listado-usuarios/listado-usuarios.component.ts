@@ -11,7 +11,15 @@ export class ListadoUsuariosComponent {
   
   usuarios: Usuario[]
 
-  constructor(private UsuariosServices: UsuariosService){
-    this.usuarios = this.UsuariosServices.usuarios;
+  constructor(private usuarioService: UsuariosService){
+    
+  }
+
+  ngOnInit(): void{
+    this.usuarioService.getUsuarios().subscribe(
+      usuarios => {
+        this.usuarios = usuarios;
+      }
+    )
   }
 }

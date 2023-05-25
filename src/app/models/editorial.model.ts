@@ -1,15 +1,8 @@
-export class Editorial{
-    nombre: string;
-    fecha_baja?: string;
-    fecha_alta: string;
-    prefijo_editorial:number;
-    activo: string;
+export interface Editorial{
+    id?:string;
+    nombre: any;
+    fechaAlta: any;
+    prefijo:any;
+    estado: any;
 
-    constructor(nombre:string, fecha_alta:string, prefijo_editorial:number, activo:string, fecha_baja?:string){
-        this.nombre = nombre;
-        this.fecha_baja = fecha_baja;
-        this.fecha_alta = fecha_alta;
-        this.prefijo_editorial = prefijo_editorial;
-        this.activo = activo;
-    }
 }

@@ -1,0 +1,53 @@
+<div class="contenido">
+  <div class="encabezado">
+    <p class="text-center font-weight-bold">Modificar Editorial</p>
+  </div>
+  <form [formGroup]="datosEditorial" (ngSubmit)="update()">
+    <div class="body">
+      <div class="form-group was-validated">
+        <label for="nombre">Nombre de la editorial</label>
+        <input type="text" name="nombre" class="form-control" formControlName="nombre"
+          placeholder="Nombre de la editorial" required />
+        <div *ngIf="nombre && nombre.invalid && nombre.touched" class="invalid-feedback">
+          Por favor introduzca el nombre de la editorial
+        </div>
+      </div>
+
+      <div class="form-group was-validated">
+        <label for="prefijo">Prefijo editorial</label>
+        <input type="number" name="prefijo" class="form-control" formControlName="prefijo"
+          placeholder="Prefijo editorial" required />
+        <div *ngIf="prefijo && prefijo.invalid && prefijo.touched" class="invalid-feedback">
+          Por favor introduzca el prefijo de la editorial
+        </div>
+      </div>
+
+      <div class="form-group was-validated">
+        <label for="fechaAlta">Fecha de Alta</label>
+        <input type="date" name="fechaAlta" class="form-control" formControlName="fechaAlta" placeholder="Fecha de Alta"
+          required />
+        <div *ngIf="fechaAlta && fechaAlta.invalid && fechaAlta.touched" class="invalid-feedback">
+          Por favor introduzca una fecha de alta
+        </div>
+      </div>
+
+      <div class="form-group was-validated">
+        <label for="editorial">Estado</label>
+        <mat-select placeholder="Estado" name="estado" class="estado" formControlName="estado" required>
+          <mat-option value="Activo">Activo</mat-option>
+          <mat-option value="Inactivo">Inactivo</mat-option>
+          <div *ngIf="estado && estado.invalid && estado.touched" class="invalid-feedback">
+            Por favor introduzca el estado
+          </div>
+        </mat-select>
+      </div>
+
+      <div class="footer">
+        <button [disabled]="datosEditorial.invalid" type="submit"
+          class="btn btn-primary btn w-100 align-self-center p-2 mt-4">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

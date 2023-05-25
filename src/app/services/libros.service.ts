@@ -1,38 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Libro } from '../models/libro.model';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore'
-import { Observable, map } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData, doc, deleteDoc, getDoc, updateDoc } from '@angular/fire/firestore'
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LibrosService {
-  librosColeccion: AngularFirestoreCollection<Libro>;
-  libroDoc: AngularFirestoreDocument<Libro>;
-  libros: Observable<Libro[]>;
-  libro: Observable<Libro>;
 
-  constructor(private db: AngularFirestore){
-    this.librosColeccion = db.collection('libros')
-  }
-  
+  constructor(private FireStore: Firestore){}
 
   getLibros(): Observable<Libro[]>{
-    this.libros = this.librosColeccion.snapshotChanges().pipe(
-      map( cambios => {
-        return cambios.map( accion => {
-          const datos = accion.payload.doc.data() as Libro;
-          datos.id = accion.payload.doc.id;
-          return datos;
-        })
-      })
-    )
-    return this.libros
+    const libroRef = collection(this.FireStore,'libros');
+    return collectionData(libroRef, {idField: 'id'}) as Observable<Libro[]>
   }
 
-  agregarLibro(libro: Libro){
-    //this.libros.push(libro);
-    this.librosColeccion.add(libro);
+  async getLibro(id:any){
+    const libroDocRef = doc(this.FireStore, `libros/${id}`);
+    const docSnap = await getDoc(libroDocRef)
+    return docSnap.data()
+  }
+
+
+  agregarLibro(libro:Libro){
+    const libroRef = collection(this.FireStore,'libros');
+    return addDoc(libroRef,libro);
+  }
+
+  borrarLibro(libro:Libro){
+    const libroDocRef = doc(this.FireStore, `libros/${libro.id}`);
+    return deleteDoc(libroDocRef);
+  }
+
+  modificarLibro(id:any, datos:any){
+    const libroDocRef = doc(this.FireStore, `libros/${id}`);
+    updateDoc(libroDocRef,datos)
+    .then(result => {
+      console.log(result)
+    })
+    .catch(error => console.log(error))
   }
 
 }

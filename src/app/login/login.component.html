@@ -4,59 +4,54 @@
       <mat-tab label="Inicio de Sesion">
         <h1 class="text-center">Inicio de Sesión</h1>
 
-        <form class="needs-validation" action="">
+        <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
           <div class="form-group was-validated">
-            <label class="form-label" for="usuario">Usuario</label>
-            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" #inicioUsuario required />
-            <div class="invalid-feedback">Por favor introduzca su usuario</div>
+            <label class="form-label" for="correo">Correo</label>
+            <input type="text" formControlName="correo" name="correo" id="correo" class="form-control" placeholder="Correo" required />
+            <div  *ngIf="correo && correo.invalid && correo.touched" class="invalid-feedback">Por favor introduzca su correo</div>
           </div>
 
           <div class="form-group was-validated">
             <label class="form-label" for="contraseña">Contraseña</label>
-            <input type="password" name="contra" id="contra" class="form-control" placeholder="Contraseña" #inicioContra required />
-            <div class="invalid-feedback">
+            <input type="password" formControlName="contra" name="contra" id="contra" class="form-control" placeholder="Contraseña" required />
+            <div *ngIf="contra && contra.invalid && contra.touched" class="invalid-feedback">
               Por favor introduzca su contraseña
             </div>
           </div>
-
-          <div class="form-group form-check">
-            <label class="form-check-label"><input class="form-check-input" type="checkbox" />Recordar
-              contraseña</label>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-100 p-1">
+          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary w-100 p-1">
             Ingresar
-          </button>
+          </button><br>
+          <button class="google btn btn-primary w-75 p-1 mt-2" (click)="loginGoogle()"><i class="bi bi-google"></i>Ingresar con Google</button>
         </form>
       </mat-tab>
       <mat-tab label="Registro">
         <h1 class="text-center">Registro</h1>
 
-        <form class="needs-validation" action="">
-          <div class="form-group was-validated">
+        <form [formGroup]="registerForm" (ngSubmit)="userRegister()">
+         <div class="form-group was-validated">
             <label class="form-label" for="nombre">Nombre completo</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre Completo" [(ngModel)]="registroNombre" required />
-            <div class="invalid-feedback">Por favor introduzca un nombre</div>
+            <input type="text" formControlName="registroNombre" name="nombre" id="nombre" class="form-control" placeholder="Nombre Completo" required />
+            <div *ngIf="registroNombre && registroNombre.invalid && registroNombre.touched" class="invalid-feedback">Por favor introduzca un nombre</div>
           </div>
           <div class="form-group was-validated">
-            <label class="form-label" for="email">Correo Electronico</label>
-            <input type="email" name="email" id="email" class="form-control" placeholder="Correo electronico" [(ngModel)]="registroEmail" required />
-            <div class="invalid-feedback">Por favor introduzca un correo valido</div>
+            <label class="form-label" for="correo">Correo Electronico</label>
+            <input type="email" formControlName="correo" name="correo" id="correo" class="form-control" placeholder="Correo electronico" required />
+            <div *ngIf="correoR && correoR.invalid && correoR.touched" class="invalid-feedback">Por favor introduzca un correo valido</div>
           </div>
           <div class="form-group was-validated">
-            <label class="form-label" for="usuario">Usuario</label>
-            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" [(ngModel)]="registroUsuario" required />
-            <div class="invalid-feedback">Por favor introduzca su nombre de usuario</div>
+           <label class="form-label" for="usuario">Usuario</label>
+            <input type="text" formControlName="registroUsuario" name="usuario" id="usuario" class="form-control" placeholder="Usuario"  required />
+            <div *ngIf="registroUsuario && registroUsuario.invalid && registroUsuario.touched" class="invalid-feedback">Por favor introduzca su nombre de usuario</div>
           </div>
           <div class="form-group was-validated">
-            <label class="form-label" for="contraseña">Contraseña</label>
-            <input type="password" name="contra" id="contra" class="form-control" placeholder="Contraseña" [(ngModel)]="registroContra" required />
-            <div class="invalid-feedback">
+            <label class="form-label" for="password">Contraseña</label>
+            <input type="password" formControlName="password" name="password" id="password" class="form-control" placeholder="Contraseña"  required />
+            <div *ngIf="password && password.invalid && password.touched" class="invalid-feedback">
               Por favor introduzca su nueva contraseña
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary w-100 p-1">
+          <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary w-100 p-1">
             Registrarse
           </button>
         </form>

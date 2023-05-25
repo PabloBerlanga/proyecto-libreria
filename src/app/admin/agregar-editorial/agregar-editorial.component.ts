@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Editorial } from 'src/app/models/editorial.model';
 import { EditorialesService } from 'src/app/services/editoriales.service';
@@ -10,22 +11,38 @@ import { EditorialesService } from 'src/app/services/editoriales.service';
 })
 export class AgregarEditorialComponent {
 
-  editoriales: Editorial[];
-  nombreEditorial:string;
-  fechaAltaEditorial:string;
-  preEditorial:number;
-  estadoEditorial:string;
-  fechaBajaEditorial:string = "";
+  datosEditorial = new FormGroup({
+    nombre: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    fechaAlta: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    prefijo: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    estado: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+  })
+  constructor(private EditorialesService: EditorialesService, private router: Router) {
 
-  constructor(private EditorialesService: EditorialesService, private router:Router){
-    this.editoriales = this.EditorialesService.editoriales
   }
 
+  get nombre() {
+    return this.datosEditorial.get('nombre');
+  }
+  get fechaAlta() {
+    return this.datosEditorial.get('fechaAlta');
+  }
+  get prefijo() {
+    return this.datosEditorial.get('prefijo');
+  }
+  get estado() {
+    return this.datosEditorial.get('estado');
+  }
 
-  crearEditorial(){
-    let nuevaEditorial = new Editorial(this.nombreEditorial,this.fechaAltaEditorial,this.preEditorial,this.estadoEditorial,this.fechaBajaEditorial);
+  agregarEditorial() {
+    console.log(this.datosEditorial.value);
+    const nuevaEditorial: Editorial = {
+      nombre: this.datosEditorial.value.nombre,
+      fechaAlta: this.datosEditorial.value.fechaAlta,
+      prefijo: this.datosEditorial.value.prefijo,
+      estado: this.datosEditorial.value.estado
+    }
     this.EditorialesService.agregarEditorial(nuevaEditorial);
     this.router.navigate(['admin/editoriales']);
-    console.log(nuevaEditorial);
   }
 }

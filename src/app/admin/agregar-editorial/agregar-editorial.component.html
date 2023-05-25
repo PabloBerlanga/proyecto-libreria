@@ -3,42 +3,39 @@
         <p class="text-center font-weight-bold">Nuevo Editorial</p>
     </div>
     <div class="formulario">
-        <form class="needs-validation" action="">
-            <div class="form-group was-validated">
-                <label class="form-label fs-3" for="nombre">Nombre editorial</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre editorial" [(ngModel)]="nombreEditorial"
-                    required />
-                <div class="invalid-feedback fs-3">
-                    Por favor introduzca un nombre para la editorial
-                </div>
-            </div>
-            <div class="form-group was-validated">
-                <label class="form-label fs-3" for="fechaAlta">Fecha Alta</label>
-                <input type="date" name="fechaAlta" id="fechaAlta" class="form-control" placeholder="Fecha Alta" [(ngModel)]="fechaAltaEditorial"
-                    required />
-                <div class="invalid-feedback fs-3">
-                    Por favor introduzca la fecha de alta de la editorial
-                </div>
-            </div>
-            <div class="form-group was-validated">
-                <label class="form-label fs-3" for="prefijo">Prefijo Editorial</label>
-                <input type="number" name="prefijo" id="prefijo" class="form-control" placeholder="Prefijo editorial" [(ngModel)]="preEditorial"
-                    required />
-                <div class="invalid-feedback fs-3">
-                    Por favor introduzca el prefijo editorial correspondiente
-                </div>
-            </div>
-            <div class="form-group was-validated">
-                <label class="form-label fs-3" for="estado">Estado</label>
-                <select class="form-select form-select-md" aria-label=".form-select-lg" name="estado" [(ngModel)]="estadoEditorial">
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                </select>
-            </div>
+        <form [formGroup]="datosEditorial" (ngSubmit)="agregarEditorial()">
+            <div class="body">
+              <div class="form-group was-validated">
+                <label for="titulo">Nombre Editorial</label>
+                <input type="text" name="nombre" class="form-control" formControlName="nombre" placeholder="Nombre Editorial" required>
+                <div  *ngIf="nombre && nombre.invalid && nombre.touched" class="invalid-feedback">Por favor introduzca la nombre de la editorial</div>
+              </div>
+        
+              <div class="form-group was-validated">
+                <label for="autor">Prefijo Editorial</label>
+                <input type="number" name="prefijo" class="form-control" formControlName="prefijo" placeholder="Prefijo Editorial" required>
+                <div  *ngIf="prefijo && prefijo.invalid && prefijo.touched" class="invalid-feedback">Por favor introduzca el prefijo de la editorial</div>
+              </div>
+        
+              <div class="form-group was-validated">
+                <label for="precio">Fecha Alta</label>
+                <input type="date" name="fechaAlta" class="form-control" formControlName="fechaAlta" placeholder="Fecha de Alta" required>
+                <div  *ngIf="fechaAlta && fechaAlta.invalid && fechaAlta.touched" class="invalid-feedback">Por favor introduzca la fecha de alta</div>
+              </div>
+        
+              <div class="form-group was-validated">
+                <label for="editorial">Estado</label>
+                <mat-select placeholder="Estado" name="estado" class="estado" formControlName="estado" required>
+                  <mat-option value="Activo">Activo</mat-option>
+                  <mat-option value="Inactivo">Inactivo</mat-option>
+                  <div *ngIf="estado && estado.invalid && estado.touched" class="invalid-feedback">Por favor introduzca el estado</div>
+                </mat-select>
+              </div>
 
-            <button type="submit" class="btn btn-primary w-100 p-1 mt-5" (click)="crearEditorial()">
-                Crear Editorial
-            </button>
-        </form>
+              <div class="footer">
+                <button [disabled]="datosEditorial.invalid" type="submit" class="btn btn-primary btn w-100 align-self-center p-2 mt-4">Guardar</button>
+              </div>
+            </div>
+          </form>
     </div>
 </div>
