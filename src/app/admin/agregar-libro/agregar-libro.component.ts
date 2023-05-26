@@ -109,7 +109,10 @@ export class AgregarLibroComponent {
       }
 
       this.librosServicio.agregarLibro(nuevoLibro)
-      .then(response => console.log(response))
+      .then(response => {
+        console.log(response)
+        this.router.navigate(['admin/libros'])
+      })
       .catch(error => console.log(error))
     }
     else {
@@ -130,7 +133,7 @@ export class AgregarLibroComponent {
         }
         console.log(nuevoLibro);
         this.librosServicio.agregarLibro(nuevoLibro)
-
+        this.router.navigate(['admin/libros'])
       })
       .catch(error => console.log(error))
         

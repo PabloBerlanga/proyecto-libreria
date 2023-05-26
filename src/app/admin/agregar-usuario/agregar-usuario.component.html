@@ -31,7 +31,7 @@
         
               <div class="form-group was-validated">
                 <label for="admin">Tipo de Usuario</label>
-                <mat-select placeholder="Administrador" name="editorial" class="admin" formControlName="admin" required>
+                <mat-select placeholder="Administrador" name="admin" class="admin" formControlName="admin" required>
                   <mat-option value="Administrador"> Administrador </mat-option>
                   <mat-option value="Usuario"> Usuario </mat-option>
                   <div *ngIf="admin && admin.invalid && admin.touched" class="invalid-feedback">Por favor introduzca el tipo de usuario a crear</div>

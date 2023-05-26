@@ -28,7 +28,7 @@
 
       <div class="form-group was-validated">
         <label for="fechaSalida">Fecha Salida</label>
-        <input type="text" name="fechaSalida" class="form-control" formControlName="fechaSalida" placeholder="Fecha de salida" required>
+        <input type="date" name="fechaSalida" class="form-control" formControlName="fechaSalida" placeholder="Fecha de salida" required>
         <div  *ngIf="fechaSalida && fechaSalida.invalid && fechaSalida.touched" class="invalid-feedback">Por favor introduzca la fecha de salida</div>
       </div>
 

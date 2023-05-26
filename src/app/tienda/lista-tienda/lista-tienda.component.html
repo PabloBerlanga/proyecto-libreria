@@ -8,7 +8,7 @@
     <div class="listado-libros" onload="cargarImagenes()">
         <mat-card *ngFor="let libro of libros | filter:filtrarNombre" style="background-color: rgb(243, 176, 88)">
             <mat-card-content>
-                <img [src]="libro.img" alt="Imagen de producto" width="100px" height="100px">
+                <img [src]="libro.img" alt="Imagen de producto" width="100px" height="150px">
                 <h1>{{libro.titulo}}</h1>
                 <h1>{{libro.editorial}}</h1>
                 <h1>{{libro.precio}}€</h1>

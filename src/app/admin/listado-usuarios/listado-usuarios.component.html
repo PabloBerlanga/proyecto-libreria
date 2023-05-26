@@ -10,7 +10,6 @@
           <th scope="col">Correo</th>
           <th scope="col">Usuario inicio</th>
           <th scope="col">Tipo de usuario</th>
-          <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody class="listado" *ngFor="let Usuario of usuarios; index as i">
@@ -21,7 +20,6 @@
           <td>{{Usuario.user}}</td>
           <td *ngIf="Usuario.admin == 'Administrador'">Administrador</td>
           <td *ngIf="Usuario.admin == 'Usuario'">Usuario</td>
-          <td><button id="editar" class="btn btn-primary">Editar</button></td>
         </tr>
       </tbody>
     </table>
